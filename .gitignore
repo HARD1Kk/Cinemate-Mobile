@@ -1,39 +1,40 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# OSX
+.DS_Store
 
-# dependencies
+# Android/IJ
+*.iml
+.gradle
+local.properties
+.idea/
+.cxx/
+
+# Node
 node_modules/
+npm-debug.log
+yarn-error.log
 
 # Expo
 .expo/
-dist/
+.expo-shared/
 web-build/
-expo-env.d.ts
 
-# Native
-.kotlin/
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
+# Environment
+.env
+.env.local
+*.env.*
 
-# Metro
-.metro-health-check*
+# Build
+dist/
+build/
+*.apk
+*.aab
 
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
+# VSCode
+.vscode/
 
-# macOS
-.DS_Store
-*.pem
+# Testing
+coverage/
 
-# local env files
-.env*.local
-
-# typescript
-*.tsbuildinfo
-
-app-example
+# Misc
+*.log
+logs/
