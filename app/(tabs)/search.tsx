@@ -1,38 +1,47 @@
-import {
-  Image,
-  View,
-  Text,
-  ScrollView,
-  FlatList,
-  ActivityIndicator,
-} from "react-native";
-import React from "react";
-import { images } from "@/constants/images";
+import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
-import MovieCard from "@/components/MovieCard";
-import { useRouter } from "expo-router";
-import useFetch from "@/services/useFetch";
+import { images } from "@/constants/images";
 import { fetchPopularMovies } from "@/services/api";
+import useFetch from "@/services/useFetch";
+import React, { useEffect, useState } from "react";
 
-const search = () => {
-  const router = useRouter();
+import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
+
+const Search = () => {
+  
+  const [searchQuery, setSearchQuery] = useState("");
 
   const {
     data: movies,
     loading: moviesLoading,
     error: moviesError,
-  } = useFetch(() =>
-    fetchPopularMovies({
-      query: "",
-    })
+    refetch: loadSearchedMovies,
+    reset,
+  } = useFetch(
+    () =>
+      fetchPopularMovies({
+        query: searchQuery,
+      }),
+    false
   );
+
+  useEffect(() => {
+    const timeoutId = setTimeout(async () => {
+      if (searchQuery.trim()) {
+        await loadSearchedMovies();
+      } else {
+        reset();
+      }
+    }, 500);
+    return () => clearTimeout(timeoutId);
+  }, [searchQuery]);
 
   return (
     <View className="flex-1 bg-primary">
       <Image
         source={images.bg}
-        className="flex-1 w-full absolute" // add z-0 later
+        className="flex-1 w-full absolute z-0"
         resizeMode="cover"
       />
       <FlatList
@@ -51,10 +60,14 @@ const search = () => {
         ListHeaderComponent={
           <>
             <View className="w-full flex-row justify-center mt-20 items-center">
-              <Image source={icons.logo} className="w-12 h-10" />
+              <Image source={icons.logo} className="w-14 h-10 mx-auto mb-5" />
             </View>
-            <View className="my-5">
-              <SearchBar placeholder="Search movies... " />
+            <View className="my-5 mt-3 ">
+              <SearchBar
+                value={searchQuery}
+                onChangeText={(text: string) => setSearchQuery(text)}
+                placeholder="Search movies... "
+              />
             </View>
 
             {moviesLoading && (
@@ -71,18 +84,29 @@ const search = () => {
             )}
             {!moviesLoading &&
               !moviesError &&
-              'SEARCH TERM'.trim() &&
+              searchQuery.trim() &&
               movies?.length > 0 && (
                 <Text className="text-xl  text-white font-bold">
                   Search Results for{" "}
-                  <Text className="text-accent"> SEARCH TERM </Text>
+                  <Text className="text-accent"> {searchQuery} </Text>
                 </Text>
               )}
           </>
+        }
+        ListEmptyComponent={
+         !moviesLoading && !moviesError ? (
+          <View className="mt-10 px-5 ">
+
+            <Text className="text-center text-gray-500">
+              {searchQuery.trim() ? 'No movie Found' : 'Search for a movie'}
+            </Text>
+
+            </View>
+         ): null
         }
       />
     </View>
   );
 };
 
-export default search;
+export default Search;

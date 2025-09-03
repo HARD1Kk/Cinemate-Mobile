@@ -1,19 +1,18 @@
+import MovieCard from "@/components/MovieCard";
+import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
+import { fetchPopularMovies } from "@/services/api";
+import useFetch from "@/services/useFetch";
+import { useRouter } from "expo-router";
 import {
-  Text,
-  View,
-  Image,
-  ScrollView,
   ActivityIndicator,
   FlatList,
+  Image,
+  ScrollView,
+  Text,
+  View,
 } from "react-native";
-import SearchBar from "@/components/SearchBar";
-import { useRouter } from "expo-router";
-import useFetch from "@/services/useFetch";
-import { fetchPopularMovies } from "@/services/api";
-import { useEffect } from "react";
-import MovieCard from "@/components/MovieCard";
 
 export default function Index() {
   const router = useRouter();
@@ -41,7 +40,9 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ minHeight: "100%", paddingBottom: 10 }}
       >
-        <Image source={icons.logo} className="w-14 h-10 mt-20 mx-auto mb-5" />
+        <View className="w-full flex-row justify-center mt-20 items-center">
+          <Image source={icons.logo} className="w-14 h-10 mx-auto mb-5" />
+        </View>
 
         {moviesLoading ? (
           <ActivityIndicator
@@ -56,8 +57,10 @@ export default function Index() {
             <SearchBar
               onPress={() => router.push("/search")}
               placeholder="Search for a movie"
+              value=""
+              onChangeText={() => {}}
             />
-
+            
             <>
               <Text className="text-lg font-bold mt-5 mb-3 text-white">
                 Latest Movies
