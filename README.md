@@ -56,6 +56,32 @@ To run this project locally, follow these steps:
     - After running `npx expo start --tunnel` (as described in step 3), a QR code will be displayed in your terminal or browser.
     - Open the Expo Go app on your phone and scan the QR code to open the app on your device.
 
+## TMDB API Key Setup
+
+This application uses The Movie Database (TMDB) API. To use the application, you need to obtain an API key from TMDB and set it up as an environment variable.
+
+1.  **Get a TMDB API Key:**
+    - Go to the [TMDB website](https://www.themoviedb.org/).
+    - Sign up for an account if you don't have one.
+    - Navigate to your account settings and then to the API section.
+    - Request a new API key (Developer or Production).
+
+2.  **Set the Environment Variable:**
+    - Create a new file named `.env` in the root directory of your project (where `package.json` is located).
+    - Add your TMDB API key to this file in the following format:
+
+        ```
+        EXPO_PUBLIC_MOVIE_APP_API_KEY=YOUR_API_KEY_HERE
+        ```
+        Replace `YOUR_API_KEY_HERE` with the actual API key you obtained from TMDB.
+
+3.  **Restart the Development Server:**
+    - If your Expo development server is already running, stop it and restart it to load the new environment variable:
+
+        ```bash
+        npx expo start --tunnel
+        ```
+
 ## Usage
 
 - **Login/Register:** log in to access the app's features.
@@ -90,3 +116,6 @@ If you have any questions or suggestions, feel free to reach out:
 
 - Name : [Hardik](mailto:hardik216730@example.com)
 - Project Link: [Project Link](https://github.com/HARD1Kk/Cinemate-Mobile)
+
+
+Now the application should be able to access the TMDB API using your provided key.
