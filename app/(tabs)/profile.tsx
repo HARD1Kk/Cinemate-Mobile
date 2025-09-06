@@ -45,6 +45,11 @@ const profile = () => {
           resizeMode="cover"
         />
         <Text className="text-white text-2xl font-bold mt-5">{user?.name}</Text>
+        <Image
+          source={{ uri: 'https://picsum.photos/200/300' }}
+          className="w-32 h-32 rounded-lg mt-5"
+          resizeMode="cover"
+        />
       </View>
       <FlatList
         data={settings}

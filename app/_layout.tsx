@@ -1,9 +1,10 @@
 import { Stack, useRouter, useSegments } from "expo-router";
-import { StatusBar } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { FavoritesProvider } from "../contexts/FavoritesContext";
 import { AuthProvider, useAuth } from "../contexts/AuthContext";
 import "./globals.css";
 import { useEffect } from "react";
+
 
 const InitialLayout = () => {
   const { user } = useAuth();
@@ -65,11 +66,7 @@ export default function RootLayout() {
   return (
     <AuthProvider>
       <FavoritesProvider>
-        <StatusBar
-          backgroundColor="#0A0A0A"
-          barStyle="light-content"
-          translucent
-        />
+        <StatusBar hidden={true} />
         <InitialLayout />
       </FavoritesProvider>
     </AuthProvider>
