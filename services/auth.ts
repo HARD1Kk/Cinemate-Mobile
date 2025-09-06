@@ -5,11 +5,12 @@ interface User {
 }
 
 const randomNames = [
-    'Time Traveller',
-    'Cosmic Surfer',
-    'Quantum Leap',
-    'Star Gazer',
-    'Galaxy Rider',
+    'Test User 1',
+    'Test User 2',
+    'Test User 3',
+    'Test User 4',
+    'Test User 5',
+    'Test User 6',
 ];
 
 export const login = async (email: string, password: string): Promise<User> => {
