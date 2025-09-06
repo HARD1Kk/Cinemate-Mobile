@@ -14,14 +14,15 @@ A mobile application for browsing, searching, and saving movies, built with Reac
 
 <table>
   <tr>
-    <td><img src="assets/screenshots/home.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Home Screen"></td>
-    <td><img src="assets/screenshots/login.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Login Screen"></td>
-    <td><img src="assets/screenshots/profile.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Profile Screen"></td>
+    <td><h3>Home Screen</h3><img src="assets/screenshots/home.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Home Screen"></td>
+    <td><h3>Login Screen</h3><img src="assets/screenshots/login.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Login Screen"></td>
+    <td><h3>Movie Details Screen</h3><img src="assets/screenshots/movieInfo.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Movie Details Screen"></td>
   </tr>
+  
   <tr>
-    <td><img src="assets/screenshots/saved.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Saved Screen"></td>
-    <td><img src="assets/screenshots/search.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Search Screen"></td>
-    <td></td>
+    <td><h3>Saved Movies Screen</h3><img src="assets/screenshots/saved.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Saved Screen"></td>
+    <td><h3>Search Screen</h3><img src="assets/screenshots/search.jpg" style="width: 250px; max-width: 100%; height: auto;" alt="Search Screen"></td>
+    <td><h3>Profile Screen</h3><img src="assets/screenshots/profile.jpg" style="width: 250px; max_width: 100%; height: auto;" alt="Profile Screen"></td>
   </tr>
 </table>
 
@@ -46,10 +47,11 @@ To run this project locally, follow these steps:
 3.  **Start the Expo development server:**
 
     ```bash
-    npx expo start --tunnel 
+    npx expo start --tunnel
     ```
 
     This will open a new tab in your browser with Expo Dev Tools. You can then run the app on an iOS simulator, Android emulator, or your physical device.
+
 4.  **Install Expo Go on your mobile device and scan the QR code:**
 
     - Download the **Expo Go** app from the [App Store (iOS)](https://apps.apple.com/us/app/expo-go/id1397950279) or [Google Play Store (Android)](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en&gl=US).
@@ -61,26 +63,30 @@ To run this project locally, follow these steps:
 This application uses The Movie Database (TMDB) API. To use the application, you need to obtain an API key from TMDB and set it up as an environment variable.
 
 1.  **Get a TMDB API Key:**
+
     - Go to the [TMDB website](https://www.themoviedb.org/).
     - Sign up for an account if you don't have one.
     - Navigate to your account settings and then to the API section.
     - Request a new API key (Developer or Production).
 
 2.  **Set the Environment Variable:**
+
     - Create a new file named `.env` in the root directory of your project (where `package.json` is located).
     - Add your TMDB API key to this file in the following format:
 
-        ```
-        EXPO_PUBLIC_MOVIE_APP_API_KEY=YOUR_API_KEY_HERE
-        ```
-        Replace `YOUR_API_KEY_HERE` with the actual API key you obtained from TMDB.
+      ```
+      EXPO_PUBLIC_MOVIE_APP_API_KEY=YOUR_API_KEY_HERE
+      ```
+
+      Replace `YOUR_API_KEY_HERE` with the actual API key you obtained from TMDB.
 
 3.  **Restart the Development Server:**
+
     - If your Expo development server is already running, stop it and restart it to load the new environment variable:
 
-        ```bash
-        npx expo start --tunnel
-        ```
+      ```bash
+      npx expo start --tunnel
+      ```
 
 ## Usage
 
@@ -109,13 +115,9 @@ Contributions are welcome! Please follow these steps:
 5.  Push to the branch (`git push origin feature/your-feature-name`).
 6.  Open a Pull Request.
 
-
 ## Contact
 
 If you have any questions or suggestions, feel free to reach out:
 
 - Name : [Hardik](mailto:hardik216730@example.com)
 - Project Link: [Project Link](https://github.com/HARD1Kk/Cinemate-Mobile)
-
-
-Now the application should be able to access the TMDB API using your provided key.
