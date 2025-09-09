@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { Movie } from '@/interfaces/interfaces';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from './AuthContext';
 
 interface FavoritesContextType {
   favorites: Movie[];
@@ -17,11 +18,13 @@ interface FavoritesProviderProps {
 
 export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
   const [favorites, setFavorites] = useState<Movie[]>([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     const loadFavorites = async () => {
       try {
-        const storedFavorites = await AsyncStorage.getItem('favorites');
+        const storageKey = `@favorites_${user?.email}`;
+        const storedFavorites = await AsyncStorage.getItem(storageKey);
         if (storedFavorites !== null) {
           setFavorites(JSON.parse(storedFavorites));
         }

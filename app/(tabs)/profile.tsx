@@ -1,8 +1,8 @@
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
-import { useAuth } from "../../contexts/AuthContext";
 import React from "react";
 import { Alert, FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import { useAuth } from "../../contexts/AuthContext";
 
 const profile = () => {
   const { user, logout } = useAuth();
@@ -22,9 +22,8 @@ const profile = () => {
   };
 
   const settings = [
-    { id: "1", name: "Edit Profile", icon: icons.person, onPress: () => {} },
-    { id: "2", name: "Privacy Policy", icon: icons.search, onPress: () => {} },
-    { id: "3", name: "Terms of Service", icon: icons.search, onPress: () => {} },
+    { id: "1", name: "Profile", icon: icons.person, onPress: () => {} },
+  
     { id: "4", name: "Logout", icon: icons.person, onPress: handleLogout },
   ];
 
@@ -36,7 +35,7 @@ const profile = () => {
         resizeMode="cover"
       />
       <View className="w-full flex-row justify-center mt-20 items-center">
-        <Image source={icons.logo} className="w-14 h-10 mx-auto mb-5" />
+        <Image source={icons.logo} className="w-20 h-14 mx-auto mb-5" />
       </View>
       <View className="items-center mt-10">
         <Image
@@ -45,11 +44,7 @@ const profile = () => {
           resizeMode="cover"
         />
         <Text className="text-white text-2xl font-bold mt-5">{user?.name}</Text>
-        <Image
-          source={{ uri: 'https://picsum.photos/200/300' }}
-          className="w-32 h-32 rounded-lg mt-5"
-          resizeMode="cover"
-        />
+        
       </View>
       <FlatList
         data={settings}

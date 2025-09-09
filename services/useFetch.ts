@@ -36,6 +36,5 @@ const useFetch = <T>(fetchFunction: () => Promise<T>, autoFetch = true) => {
 
   return { data, loading, error, refetch: fetchData, reset };
 
-  // Hook does not return anything yet
 };
 export default useFetch;
